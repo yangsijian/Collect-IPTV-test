@@ -8,32 +8,23 @@ from datetime import datetime, timedelta
 
 
 def get_dynamic_keywords():
-    """
-    动态生成需要过滤的关键词（今天的日期、明天的日期以及固定关键词）
-    """
     fixed_keywords = ["免费提供"]
     return fixed_keywords
 
 def contains_date(text):
-    """
-    检测字符串中是否包含日期格式（如 YYYY-MM-DD）
-    """
-    date_pattern = r"\d{4}-\d{2}-\d{2}"  # 正则表达式匹配 YYYY-MM-DD
+    date_pattern = r"\d{4}-\d{2}-\d{2}"
     return re.search(date_pattern, text) is not None
 
 
-# 配置
 CONFIG = {
-    "timeout": 10,  # Timeout in seconds
-    "max_parallel": 30,  # Max concurrent requests
-    "output_file": "best_sorted.m3u",  # Output file for the sorted M3U
-    "iptv_directory": "IPTV"  # Directory containing IPTV files
+    "timeout": 10,
+    "max_parallel": 30,
+    "output_file": "best_sorted.m3u",
+    "iptv_directory": "IPTV"
 }
 
 
-# 读取 CCTV 频道列表
 def load_cctv_channels(file_path=".github/workflows/IPTV/CCTV.txt"):
-    """从文件加载 CCTV 频道列表"""
     cctv_channels = set()
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
@@ -46,14 +37,10 @@ def load_cctv_channels(file_path=".github/workflows/IPTV/CCTV.txt"):
     return cctv_channels
 
 
-# 读取 IPTV 目录下所有省份频道文件
 def load_province_channels(files):
-    """加载多个省份的频道列表"""
     province_channels = defaultdict(set)
-
     for file_path in files:
         province_name = os.path.basename(file_path).replace(".txt", "")
-
         try:
             with open(file_path, 'r', encoding='utf-8') as file:
                 for line in file:
@@ -62,19 +49,14 @@ def load_province_channels(files):
                         province_channels[province_name].add(line)
         except FileNotFoundError:
             print(f"Error: The file {file_path} was not found.")
-
     return province_channels
 
 
-# 正规化 CCTV 频道名称
 def normalize_cctv_name(channel_name):
-    """将 CCTV 频道名称进行正规化，例如 CCTV-1 -> CCTV1"""
     return re.sub(r'CCTV[-]?(\d+)', r'CCTV\1', channel_name)
 
 
-# 从 TXT 文件中提取 IPTV 链接
 def extract_urls_from_txt(content):
-    """从 TXT 文件中提取 IPTV 链接"""
     urls = []
     for line in content.splitlines():
         line = line.strip()
@@ -84,13 +66,10 @@ def extract_urls_from_txt(content):
     return urls
 
 
-# 从 M3U 文件中提取 IPTV 链接
 def extract_urls_from_m3u(content):
-    """从 M3U 文件中提取 IPTV 链接"""
     urls = []
     lines = content.splitlines()
     channel = "Unknown"
-
     for line in lines:
         line = line.strip()
         if line.startswith("#EXTINF:"):
@@ -101,26 +80,53 @@ def extract_urls_from_m3u(content):
     return urls
 
 
-# ✅ 改造后的 test_stream：同时检测可用性 + 是否为直播流
+async def check_m3u8_is_live(session, url, timeout):
+    """
+    检查 m3u8 是否为直播流（而不是点播/回放）
+    直播流：没有 #EXT-X-ENDLIST 标签
+    点播流：有 #EXT-X-ENDLIST 标签，或总时长很短
+    返回 True 表示是直播，False 表示是点播
+    """
+    try:
+        async with session.get(url, timeout=timeout, headers={"User-Agent": "Mozilla/5.0 VLC/3.0"}) as resp:
+            if resp.status != 200:
+                return False
+            text = await asyncio.wait_for(resp.text(errors="ignore"), timeout=8)
+
+            # 有 #EXT-X-ENDLIST 说明是点播，直接丢弃
+            if "#EXT-X-ENDLIST" in text:
+                return False
+
+            # 计算总时长：累加所有 #EXTINF 的秒数
+            durations = re.findall(r'#EXTINF:([\d.]+)', text)
+            if durations:
+                total_seconds = sum(float(d) for d in durations)
+                # 总时长小于 300 秒（5分钟）视为点播
+                if total_seconds < 300:
+                    return False
+
+            # 没有 #EXT-X-ENDLIST 且时长足够 → 直播
+            return True
+
+    except Exception:
+        return False
+
+
 async def test_stream(url):
     """
     测试 IPTV 链接：
     1. HTTP 状态必须是 200
     2. Content-Type 必须是视频/音频流类型
-    3. 如果 Content-Type 不明确，读取头部字节判断是否为 TS 或 M3U8 流
-    返回 (True, 响应时间) 或 (False, None)
+    3. 如果是 m3u8，额外检测是否为直播流（排除点播/回放）
     """
-    # Content-Type 白名单（直播流）
     live_types = [
         "video/",
         "audio/",
-        "application/vnd.apple.mpegurl",  # m3u8
-        "application/x-mpegurl",          # m3u8
-        "application/octet-stream",       # 通用二进制流
-        "video/mp2t",                     # TS 流
-        "application/x-www-form-urlencoded",
+        "application/vnd.apple.mpegurl",
+        "application/x-mpegurl",
+        "application/octet-stream",
+        "video/mp2t",
     ]
-    # Content-Type 黑名单（明确不是直播）
     not_live_types = [
         "text/html",
         "text/xml",
@@ -146,29 +152,41 @@ async def test_stream(url):
                 if any(t in content_type for t in not_live_types):
                     return False, None
 
-                # 白名单直接通过
-                if any(t in content_type for t in live_types):
-                    return True, elapsed_time
+                is_live_type = any(t in content_type for t in live_types)
 
-                # Content-Type 不明确时，读取头部字节判断
-                try:
-                    chunk = await asyncio.wait_for(response.content.read(512), timeout=5)
-                except asyncio.TimeoutError:
+                # Content-Type 不明确时读取头部字节判断
+                if not is_live_type:
+                    try:
+                        chunk = await asyncio.wait_for(response.content.read(512), timeout=5)
+                    except asyncio.TimeoutError:
+                        return False, None
+
+                    if not chunk:
+                        return False, None
+
+                    # TS 流
+                    if chunk[0] == 0x47:
+                        return True, elapsed_time
+
+                    # M3U8 流
+                    if chunk.startswith(b'#EXTM3U') or chunk.startswith(b'#EXT'):
+                        is_live_type = True
+                    else:
+                        return False, None
+
+            # ✅ 如果是 m3u8 链接，额外检测是否为直播（非点播）
+            is_m3u8_url = (
+                url.endswith('.m3u8') or
+                'm3u8' in url or
+                'application/vnd.apple.mpegurl' in content_type or
+                'application/x-mpegurl' in content_type
+            )
+            if is_m3u8_url:
+                is_live = await check_m3u8_is_live(session, url, timeout)
+                if not is_live:
                     return False, None
 
-                if not chunk:
-                    return False, None
-
-                # TS 流：每个包以 0x47 开头
-                if chunk[0] == 0x47:
-                    return True, elapsed_time
-
-                # M3U8 流：文本以 #EXTM3U 开头
-                if chunk.startswith(b'#EXTM3U') or chunk.startswith(b'#EXT'):
-                    return True, elapsed_time
-
-                # 其他情况视为无效
-                return False, None
+            return True, elapsed_time
 
     except asyncio.TimeoutError:
         return False, None
@@ -176,9 +194,7 @@ async def test_stream(url):
         return False, None
 
 
-# 测试多个 IPTV 链接
 async def test_multiple_streams(urls):
-    """测试多个 IPTV 链接"""
     semaphore = asyncio.Semaphore(CONFIG["max_parallel"])
 
     async def limited_test(url):
@@ -190,9 +206,7 @@ async def test_multiple_streams(urls):
     return results
 
 
-# 读取文件并提取 URL（支持 M3U 或 TXT 格式）
 async def read_and_test_file(file_path, is_m3u=False):
-    """读取文件并提取 URL 进行测试"""
     try:
         async with aiohttp.ClientSession(cookie_jar=None) as session:
             async with session.get(file_path, timeout=aiohttp.ClientTimeout(total=30)) as response:
@@ -222,14 +236,11 @@ async def read_and_test_file(file_path, is_m3u=False):
         return []
 
 
-# 生成排序后的 M3U 和 M3U8 文件
 def generate_sorted_m3u(valid_urls, cctv_channels, province_channels, filename):
-    """生成排序后的 M3U 和 M3U8 文件"""
     cctv_channels_list = []
     province_channels_list = defaultdict(list)
     satellite_channels = []
     other_channels = []
-    keywords = get_dynamic_keywords()
 
     for channel, url in valid_urls:
         if contains_date(channel) or contains_date(url):
@@ -298,9 +309,7 @@ def generate_sorted_m3u(valid_urls, cctv_channels, province_channels, filename):
     print(f"📺 总计写入频道数: {len(all_channels)}")
 
 
-# 主函数
 async def main(file_urls, cctv_channel_file, province_channel_files):
-    """主函数处理多个文件"""
     cctv_channels = load_cctv_channels(cctv_channel_file)
     province_channels = load_province_channels(province_channel_files)
 
