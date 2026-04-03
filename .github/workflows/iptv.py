@@ -39,7 +39,7 @@ def load_cctv_channels(file_path=".github/workflows/IPTV/CCTV.txt"):
         with open(file_path, 'r', encoding='utf-8') as file:
             for line in file:
                 line = line.strip()
-                if line:  # Ignore empty lines
+                if line:
                     cctv_channels.add(line)
     except FileNotFoundError:
         print(f"Error: The file {file_path} was not found.")
@@ -47,23 +47,21 @@ def load_cctv_channels(file_path=".github/workflows/IPTV/CCTV.txt"):
 
 
 # 读取 IPTV 目录下所有省份频道文件
-def load_province_channels(directory="IPTV"):
-    """加载所有省份的频道列表"""
+def load_province_channels(files):
+    """加载多个省份的频道列表"""
     province_channels = defaultdict(set)
 
-    for filename in os.listdir(directory):
-        if filename.endswith(".txt") and filename != "CCTV.txt":  # 排除 CCTV.txt 文件
-            province_name = filename.replace(".txt", "")  # 使用文件名作为省份名称
-            file_path = os.path.join(directory, filename)
+    for file_path in files:
+        province_name = os.path.basename(file_path).replace(".txt", "")
 
-            try:
-                with open(file_path, 'r', encoding='utf-8') as file:
-                    for line in file:
-                        line = line.strip()
-                        if line:  # Ignore empty lines
-                            province_channels[province_name].add(line)
-            except FileNotFoundError:
-                print(f"Error: The file {file_path} was not found.")
+        try:
+            with open(file_path, 'r', encoding='utf-8') as file:
+                for line in file:
+                    line = line.strip()
+                    if line:
+                        province_channels[province_name].add(line)
+        except FileNotFoundError:
+            print(f"Error: The file {file_path} was not found.")
 
     return province_channels
 
@@ -80,9 +78,9 @@ def extract_urls_from_txt(content):
     urls = []
     for line in content.splitlines():
         line = line.strip()
-        if line and ',' in line:  # 格式应该是: <频道名>,<URL>
+        if line and ',' in line:
             parts = line.split(',', 1)
-            urls.append(parts)  # 提取频道名和 URL
+            urls.append(parts)
     return urls
 
 
@@ -96,37 +94,98 @@ def extract_urls_from_m3u(content):
     for line in lines:
         line = line.strip()
         if line.startswith("#EXTINF:"):
-            # 从 EXTINF 标签中提取频道名
             parts = line.split(',', 1)
             channel = parts[1] if len(parts) > 1 else "Unknown"
         elif line.startswith(('http://', 'https://')):
-            urls.append((channel, line))  # 存储频道和 URL 的元组
+            urls.append((channel, line))
     return urls
 
 
-# 测试 IPTV 链接的可用性和速度
+# ✅ 改造后的 test_stream：同时检测可用性 + 是否为直播流
 async def test_stream(url):
-    """测试 IPTV 链接的可用性和速度"""
-    async with aiohttp.ClientSession(cookie_jar=None) as session:  # 禁用 cookie 处理
-        start_time = time.time()
-        try:
-            async with session.get(url, timeout=CONFIG["timeout"]) as response:
-                if response.status == 200:
-                    # 计算响应时间
-                    elapsed_time = time.time() - start_time
-                    return True, elapsed_time
-                else:
+    """
+    测试 IPTV 链接：
+    1. HTTP 状态必须是 200
+    2. Content-Type 必须是视频/音频流类型
+    3. 如果 Content-Type 不明确，读取头部字节判断是否为 TS 或 M3U8 流
+    返回 (True, 响应时间) 或 (False, None)
+    """
+    # Content-Type 白名单（直播流）
+    live_types = [
+        "video/",
+        "audio/",
+        "application/vnd.apple.mpegurl",  # m3u8
+        "application/x-mpegurl",          # m3u8
+        "application/octet-stream",       # 通用二进制流
+        "video/mp2t",                     # TS 流
+        "application/x-www-form-urlencoded",
+    ]
+    # Content-Type 黑名单（明确不是直播）
+    not_live_types = [
+        "text/html",
+        "text/xml",
+        "application/json",
+        "image/",
+        "text/plain",
+    ]
+
+    try:
+        timeout = aiohttp.ClientTimeout(total=CONFIG["timeout"])
+        headers = {"User-Agent": "Mozilla/5.0 VLC/3.0"}
+
+        async with aiohttp.ClientSession(cookie_jar=None) as session:
+            start_time = time.time()
+            async with session.get(url, timeout=timeout, headers=headers, allow_redirects=True) as response:
+                if response.status != 200:
                     return False, None
-        except asyncio.TimeoutError:
-            return False, None
-        except Exception as e:
-            return False, None
+
+                elapsed_time = time.time() - start_time
+                content_type = response.headers.get("Content-Type", "").lower()
+
+                # 黑名单直接排除
+                if any(t in content_type for t in not_live_types):
+                    return False, None
+
+                # 白名单直接通过
+                if any(t in content_type for t in live_types):
+                    return True, elapsed_time
+
+                # Content-Type 不明确时，读取头部字节判断
+                try:
+                    chunk = await asyncio.wait_for(response.content.read(512), timeout=5)
+                except asyncio.TimeoutError:
+                    return False, None
+
+                if not chunk:
+                    return False, None
+
+                # TS 流：每个包以 0x47 开头
+                if chunk[0] == 0x47:
+                    return True, elapsed_time
+
+                # M3U8 流：文本以 #EXTM3U 开头
+                if chunk.startswith(b'#EXTM3U') or chunk.startswith(b'#EXT'):
+                    return True, elapsed_time
+
+                # 其他情况视为无效
+                return False, None
+
+    except asyncio.TimeoutError:
+        return False, None
+    except Exception:
+        return False, None
 
 
 # 测试多个 IPTV 链接
 async def test_multiple_streams(urls):
     """测试多个 IPTV 链接"""
-    tasks = [test_stream(url) for _, url in urls]
+    semaphore = asyncio.Semaphore(CONFIG["max_parallel"])
+
+    async def limited_test(url):
+        async with semaphore:
+            return await test_stream(url)
+
+    tasks = [limited_test(url) for _, url in urls]
     results = await asyncio.gather(*tasks)
     return results
 
@@ -135,27 +194,31 @@ async def test_multiple_streams(urls):
 async def read_and_test_file(file_path, is_m3u=False):
     """读取文件并提取 URL 进行测试"""
     try:
-        # 获取文件内容
-        async with aiohttp.ClientSession(cookie_jar=None) as session:  # 禁用 cookie 处理
-            async with session.get(file_path) as response:
-                content = await response.text()
+        async with aiohttp.ClientSession(cookie_jar=None) as session:
+            async with session.get(file_path, timeout=aiohttp.ClientTimeout(total=30)) as response:
+                content = await response.text(errors="ignore")
 
-        # 提取 URL
         if is_m3u:
             entries = extract_urls_from_m3u(content)
         else:
             entries = extract_urls_from_txt(content)
 
-        # 测试 URL 的可用性
+        if not entries:
+            return []
+
+        print(f"📋 {file_path} 找到 {len(entries)} 个频道，检测中...")
+
         valid_urls = []
         results = await test_multiple_streams(entries)
         for (is_valid, _), (channel, url) in zip(results, entries):
             if is_valid:
                 valid_urls.append((channel, url))
 
+        print(f"  ✅ 有效: {len(valid_urls)} / {len(entries)}")
         return valid_urls
 
     except Exception as e:
+        print(f"  ❌ 读取失败: {file_path} -> {e}")
         return []
 
 
@@ -170,12 +233,10 @@ def generate_sorted_m3u(valid_urls, cctv_channels, province_channels, filename):
 
     for channel, url in valid_urls:
         if contains_date(channel) or contains_date(url):
-            continue  # 过滤掉包含日期格式的频道
-        
-        # 正规化 CCTV 频道名
+            continue
+
         normalized_channel = normalize_cctv_name(channel)
 
-        # 根据频道名判断属于哪个分组
         if normalized_channel in cctv_channels:
             cctv_channels_list.append({
                 "channel": channel,
@@ -183,7 +244,7 @@ def generate_sorted_m3u(valid_urls, cctv_channels, province_channels, filename):
                 "logo": f"https://live.fanmingming.cn/tv/{channel}.png",
                 "group_title": "央视频道"
             })
-        elif "卫视" in channel:  # 卫视频道
+        elif "卫视" in channel:
             satellite_channels.append({
                 "channel": channel,
                 "url": url,
@@ -191,11 +252,10 @@ def generate_sorted_m3u(valid_urls, cctv_channels, province_channels, filename):
                 "group_title": "卫视频道"
             })
         else:
-            # 检查是否是省份频道
             found_province = False
             for province, channels in province_channels.items():
                 for province_channel in channels:
-                    if province_channel in channel:  # 匹配省份频道名称
+                    if province_channel in channel:
                         province_channels_list[province].append({
                             "channel": channel,
                             "url": url,
@@ -214,23 +274,19 @@ def generate_sorted_m3u(valid_urls, cctv_channels, province_channels, filename):
                     "group_title": "其他频道"
                 })
 
-    # 排序：省份频道、卫视频道、其他频道
     for province in province_channels_list:
         province_channels_list[province].sort(key=lambda x: x["channel"])
 
     satellite_channels.sort(key=lambda x: x["channel"])
     other_channels.sort(key=lambda x: x["channel"])
 
-    # 合并所有频道：CCTV -> 卫视频道 -> 省份频道 -> 其他
     all_channels = cctv_channels_list + satellite_channels + \
                    [channel for province in sorted(province_channels_list) for channel in
                     province_channels_list[province]] + \
                    other_channels
 
-    # 生成 m3u8 的文件名 (将后缀 .m3u 替换为 .m3u8)
     m3u8_filename = filename.replace('.m3u', '.m3u8')
-    
-    # 写入 M3U 和 M3U8 文件
+
     for fname in [filename, m3u8_filename]:
         with open(fname, 'w', encoding='utf-8') as f:
             f.write("#EXTM3U\n")
@@ -239,35 +295,13 @@ def generate_sorted_m3u(valid_urls, cctv_channels, province_channels, filename):
                     f"#EXTINF:-1 tvg-name=\"{channel_info['channel']}\" tvg-logo=\"{channel_info['logo']}\" group-title=\"{channel_info['group_title']}\",{channel_info['channel']}\n")
                 f.write(f"{channel_info['url']}\n")
 
+    print(f"📺 总计写入频道数: {len(all_channels)}")
 
 
-# 加载省份频道列表
-def load_province_channels(files):
-    """加载多个省份的频道列表"""
-    province_channels = defaultdict(set)
-
-    for file_path in files:
-        province_name = os.path.basename(file_path).replace(".txt", "")  # 使用文件名作为省份名称
-
-        try:
-            with open(file_path, 'r', encoding='utf-8') as file:
-                for line in file:
-                    line = line.strip()
-                    if line:  # 忽略空行
-                        province_channels[province_name].add(line)
-        except FileNotFoundError:
-            print(f"Error: The file {file_path} was not found.")
-
-    return province_channels
-
-
-# 主函数：处理多个文件并生成 M3U 输出
+# 主函数
 async def main(file_urls, cctv_channel_file, province_channel_files):
     """主函数处理多个文件"""
-    # 加载 CCTV 频道列表
     cctv_channels = load_cctv_channels(cctv_channel_file)
-
-    # 加载多个省份频道列表
     province_channels = load_province_channels(province_channel_files)
 
     all_valid_urls = []
@@ -282,13 +316,11 @@ async def main(file_urls, cctv_channel_file, province_channel_files):
 
         all_valid_urls.extend(valid_urls)
 
-    # 生成排序后的 M3U 文件
     generate_sorted_m3u(all_valid_urls, cctv_channels, province_channels, CONFIG["output_file"])
     print(f"🎉 Generated sorted M3U file: {CONFIG['output_file']}")
 
 
 if __name__ == "__main__":
-    # IPTV 文件 URL（您可以添加自己的文件 URL 列表）
     file_urls = [
         "https://tzdr.com/iptv.txt",
         "https://live.kilvn.com/iptv.m3u",
@@ -298,10 +330,8 @@ if __name__ == "__main__":
         "https://m3u.ibert.me/ycl_iptv.m3u"
     ]
 
-    # CCTV 频道文件（例如 IPTV/CCTV.txt）
     cctv_channel_file = ".github/workflows/IPTV/CCTV.txt"
 
-    # 省份频道文件列表
     province_channel_files = [
         ".github/workflows/IPTV/重庆频道.txt",
         ".github/workflows/IPTV/四川频道.txt",
@@ -337,5 +367,4 @@ if __name__ == "__main__":
         ".github/workflows/IPTV/北京频道.txt"
     ]
 
-    # 执行主函数
     asyncio.run(main(file_urls, cctv_channel_file, province_channel_files))
