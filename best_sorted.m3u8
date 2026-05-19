@@ -29,6 +29,8 @@ http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 https://satellitepull.cnr.cn/live/wxcqxwgb/playlist.m3u8
 #EXTINF:-1 tvg-name=" 镇江新闻综合" tvg-logo="https://live.fanmingming.cn/tv/ 镇江新闻综合.png" group-title="上海频道", 镇江新闻综合
 http://cm-wshls.homecdn.com/live/2aa50.m3u8
+#EXTINF:-1 tvg-name="上海第一财经" tvg-logo="https://live.fanmingming.cn/tv/上海第一财经.png" group-title="上海频道",上海第一财经
+https://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="第一财经" tvg-logo="https://live.fanmingming.cn/tv/第一财经.png" group-title="上海频道",第一财经
 http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="都市剧场" tvg-logo="https://live.fanmingming.cn/tv/都市剧场.png" group-title="上海频道",都市剧场
@@ -330,17 +332,15 @@ https://satellitepull.cnr.cn/live/wx32nmgyygb/playlist.m3u8
 #EXTINF:-1 tvg-name=" 黄花城水长城02" tvg-logo="https://live.fanmingming.cn/tv/ 黄花城水长城02.png" group-title="其他频道", 黄花城水长城02
 http://gctxyc.liveplay.myqcloud.com/gc/wgw02_1/index.m3u8
 #EXTINF:-1 tvg-name="七龙珠" tvg-logo="https://live.fanmingming.cn/tv/七龙珠.png" group-title="其他频道",七龙珠
+https://live.ottiptv.cc/huya/11601966
+#EXTINF:-1 tvg-name="七龙珠" tvg-logo="https://live.fanmingming.cn/tv/七龙珠.png" group-title="其他频道",七龙珠
 https://live.metshop.top/huya/11601966
 #EXTINF:-1 tvg-name="七龙珠" tvg-logo="https://live.fanmingming.cn/tv/七龙珠.png" group-title="其他频道",七龙珠
 http://cdn.jdshipin.com:8880/huya.php?id=11601966
 #EXTINF:-1 tvg-name="三国演义" tvg-logo="https://live.fanmingming.cn/tv/三国演义.png" group-title="其他频道",三国演义
-https://live.metshop.top/huya/11602081
-#EXTINF:-1 tvg-name="三国演义" tvg-logo="https://live.fanmingming.cn/tv/三国演义.png" group-title="其他频道",三国演义
 http://cdn.jdshipin.com:8880/huya.php?id=11602081
 #EXTINF:-1 tvg-name="三国演义" tvg-logo="https://live.fanmingming.cn/tv/三国演义.png" group-title="其他频道",三国演义
 https://live.ottiptv.cc/huya/11602081
-#EXTINF:-1 tvg-name="中华小当家" tvg-logo="https://live.fanmingming.cn/tv/中华小当家.png" group-title="其他频道",中华小当家
-https://live.metshop.top/huya/11342413
 #EXTINF:-1 tvg-name="中华小当家" tvg-logo="https://live.fanmingming.cn/tv/中华小当家.png" group-title="其他频道",中华小当家
 http://cdn.jdshipin.com:8880/huya.php?id=11342413
 #EXTINF:-1 tvg-name="仙剑奇侠传" tvg-logo="https://live.fanmingming.cn/tv/仙剑奇侠传.png" group-title="其他频道",仙剑奇侠传
@@ -364,13 +364,9 @@ http://yixing-tv-ori-hls.jstv.com/yixing-tv-ori/yixing_xw.m3u8
 #EXTINF:-1 tvg-name="封神榜" tvg-logo="https://live.fanmingming.cn/tv/封神榜.png" group-title="其他频道",封神榜
 https://live.metshop.top/huya/29465849
 #EXTINF:-1 tvg-name="封神榜" tvg-logo="https://live.fanmingming.cn/tv/封神榜.png" group-title="其他频道",封神榜
-http://cdn.jdshipin.com:8880/huya.php?id=29465849
-#EXTINF:-1 tvg-name="封神榜" tvg-logo="https://live.fanmingming.cn/tv/封神榜.png" group-title="其他频道",封神榜
 https://live.ottiptv.cc/huya/29465849
 #EXTINF:-1 tvg-name="射雕英雄传" tvg-logo="https://live.fanmingming.cn/tv/射雕英雄传.png" group-title="其他频道",射雕英雄传
 https://live.metshop.top/huya/23824164
-#EXTINF:-1 tvg-name="射雕英雄传" tvg-logo="https://live.fanmingming.cn/tv/射雕英雄传.png" group-title="其他频道",射雕英雄传
-http://cdn.jdshipin.com:8880/huya.php?id=23824164
 #EXTINF:-1 tvg-name="射雕英雄传" tvg-logo="https://live.fanmingming.cn/tv/射雕英雄传.png" group-title="其他频道",射雕英雄传
 https://live.ottiptv.cc/huya/23824164
 #EXTINF:-1 tvg-name="广东体育" tvg-logo="https://live.fanmingming.cn/tv/广东体育.png" group-title="其他频道",广东体育
@@ -399,6 +395,10 @@ http://cdn.jdshipin.com:8880/huya.php?id=29465866
 https://live.metshop.top/huya/11352879
 #EXTINF:-1 tvg-name="猫和老鼠" tvg-logo="https://live.fanmingming.cn/tv/猫和老鼠.png" group-title="其他频道",猫和老鼠
 http://cdn.jdshipin.com:8880/huya.php?id=11352879
+#EXTINF:-1 tvg-name="猫和老鼠" tvg-logo="https://live.fanmingming.cn/tv/猫和老鼠.png" group-title="其他频道",猫和老鼠
+https://live.ottiptv.cc/huya/11352879
+#EXTINF:-1 tvg-name="笑傲江湖" tvg-logo="https://live.fanmingming.cn/tv/笑傲江湖.png" group-title="其他频道",笑傲江湖
+https://live.metshop.top/huya/26355790
 #EXTINF:-1 tvg-name="笑傲江湖" tvg-logo="https://live.fanmingming.cn/tv/笑傲江湖.png" group-title="其他频道",笑傲江湖
 https://live.metshop.top/huya/23865142
 #EXTINF:-1 tvg-name="笑傲江湖" tvg-logo="https://live.fanmingming.cn/tv/笑傲江湖.png" group-title="其他频道",笑傲江湖
@@ -441,8 +441,6 @@ http://serv00.bkpcp.top/litv3.php?id=4gtv-4gtv058
 https://satellitepull.cnr.cn/live/wx32nmgyygb/playlist.m3u8
 #EXTINF:-1 tvg-name="风云足球" tvg-logo="https://live.fanmingming.cn/tv/风云足球.png" group-title="其他频道",风云足球
 https://epg.pw/stream/ac8062ec9484078061d3bef507c15a423ac57ae4144e3fcc4b0a198dd420f911.m3u8
-#EXTINF:-1 tvg-name="风云足球" tvg-logo="https://live.fanmingming.cn/tv/风云足球.png" group-title="其他频道",风云足球
-https://live.goodiptv.club/api/yqgd.php?id=fyzq
 #EXTINF:-1 tvg-name="风云足球" tvg-logo="https://live.fanmingming.cn/tv/风云足球.png" group-title="其他频道",风云足球
 https://epg.pw/stream/ac8062ec9484078061d3bef507c15a423ac57ae4144e3fcc4b0a198dd420f911.m3u8
 #EXTINF:-1 tvg-name="鹿鼎记" tvg-logo="https://live.fanmingming.cn/tv/鹿鼎记.png" group-title="其他频道",鹿鼎记
