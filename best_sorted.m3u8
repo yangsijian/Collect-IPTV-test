@@ -43,6 +43,8 @@ https://live.264788.xyz/channel/xinjiangweishi?streamid=4f481f56ae39ce5d24203471
 https://live.264788.xyz/channel/jiangxiweishi?streamid=555198f31caa33506ac6abb70d788959&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
 #EXTINF:-1 tvg-name="河南卫视" tvg-logo="https://live.fanmingming.cn/tv/河南卫视.png" group-title="卫视频道",河南卫视
 http://1.94.31.214/php/hntv.php?id=hnws
+#EXTINF:-1 tvg-name="湖南卫视" tvg-logo="https://live.fanmingming.cn/tv/湖南卫视.png" group-title="卫视频道",湖南卫视
+http://8.138.7.223/tv/api.php?id=hnws4k
 #EXTINF:-1 tvg-name="西藏卫视" tvg-logo="https://live.fanmingming.cn/tv/西藏卫视.png" group-title="卫视频道",西藏卫视
 https://live.264788.xyz/channel/xizangweishi?streamid=4b4e8ea919f1cfd5e43deed1d1675251&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
 #EXTINF:-1 tvg-name="贵州卫视" tvg-logo="https://live.fanmingming.cn/tv/贵州卫视.png" group-title="卫视频道",贵州卫视
@@ -67,6 +69,8 @@ https://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name=" 都市剧场" tvg-logo="https://live.fanmingming.cn/tv/ 都市剧场.png" group-title="上海频道", 都市剧场
 https://satellitepull.cnr.cn/live/wxcqxwgb/playlist.m3u8
+#EXTINF:-1 tvg-name="上海第一财经" tvg-logo="https://live.fanmingming.cn/tv/上海第一财经.png" group-title="上海频道",上海第一财经
+https://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="第一财经" tvg-logo="https://live.fanmingming.cn/tv/第一财经.png" group-title="上海频道",第一财经
 http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="萧山新闻综合" tvg-logo="https://live.fanmingming.cn/tv/萧山新闻综合.png" group-title="上海频道",萧山新闻综合
@@ -117,6 +121,8 @@ http://zbbf2.ahbztv.com/live/418.m3u8?zanhd
 http://zbbf2.ahbztv.com/live/416.m3u8?zanhd
 #EXTINF:-1 tvg-name="祁门综合" tvg-logo="https://live.fanmingming.cn/tv/祁门综合.png" group-title="安徽频道",祁门综合
 http://zbbf2.ahbztv.com/live/416.m3u8?zanhd
+#EXTINF:-1 tvg-name=" 古县综合" tvg-logo="https://live.fanmingming.cn/tv/ 古县综合.png" group-title="山西频道", 古县综合
+https://l2fpdktp.live.sxmty.com/live/hls/e4c3b363cc4549788e2d983f403e07db/d99ce1eb686e41b9afc888110bd95aa7.m3u8?zshanxd
 #EXTINF:-1 tvg-name=" 武乡新闻综合" tvg-logo="https://live.fanmingming.cn/tv/ 武乡新闻综合.png" group-title="山西频道", 武乡新闻综合
 http://uzoiczhh.live.sxmty.com/live/hls/0d41f1480c4042d49927858f01fde707/53130407737b417b9a6259b57246bae3.m3u8?zshanxd
 #EXTINF:-1 tvg-name=" 汾西综合" tvg-logo="https://live.fanmingming.cn/tv/ 汾西综合.png" group-title="山西频道", 汾西综合
@@ -529,6 +535,8 @@ http://r.jdshipin.com/n90gt
 http://r.jdshipin.com/GeWKr
 #EXTINF:-1 tvg-name="西游记" tvg-logo="https://live.fanmingming.cn/tv/西游记.png" group-title="其他频道",西游记
 http://222.186.39.21:35466/huya/20985836
+#EXTINF:-1 tvg-name="重庆新闻" tvg-logo="https://live.fanmingming.cn/tv/重庆新闻.png" group-title="其他频道",重庆新闻
+http://38.75.136.137:98/gslb/dsdqpub/cqxw.m3u8?auth=testpub
 #EXTINF:-1 tvg-name="靖天戏剧" tvg-logo="https://live.fanmingming.cn/tv/靖天戏剧.png" group-title="其他频道",靖天戏剧
 http://serv00.bkpcp.top/litv3.php?id=4gtv-4gtv058
 #EXTINF:-1 tvg-name="音乐现场" tvg-logo="https://live.fanmingming.cn/tv/音乐现场.png" group-title="其他频道",音乐现场
