@@ -69,10 +69,6 @@ https://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name=" 都市剧场" tvg-logo="https://live.fanmingming.cn/tv/ 都市剧场.png" group-title="上海频道", 都市剧场
 https://satellitepull.cnr.cn/live/wxcqxwgb/playlist.m3u8
-#EXTINF:-1 tvg-name="上海新闻综合" tvg-logo="https://live.fanmingming.cn/tv/上海新闻综合.png" group-title="上海频道",上海新闻综合
-https://stream1.freetv.fun/shang-hai-xin-wen-zong-he-3.m3u8
-#EXTINF:-1 tvg-name="上海第一财经" tvg-logo="https://live.fanmingming.cn/tv/上海第一财经.png" group-title="上海频道",上海第一财经
-https://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="第一财经" tvg-logo="https://live.fanmingming.cn/tv/第一财经.png" group-title="上海频道",第一财经
 http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="萧山新闻综合" tvg-logo="https://live.fanmingming.cn/tv/萧山新闻综合.png" group-title="上海频道",萧山新闻综合
@@ -131,6 +127,8 @@ https://l2fpdktp.live.sxmty.com/live/hls/e4c3b363cc4549788e2d983f403e07db/d99ce1
 https://qmmqvzoz.live.sxmty.com/live/hls/f24f8a390c084386a564074c9260100c/be3fdf07606145739ab2c4b80fe0136a.m3u8?zshanxd
 #EXTINF:-1 tvg-name=" 长子综合" tvg-logo="https://live.fanmingming.cn/tv/ 长子综合.png" group-title="山西频道", 长子综合
 https://www.wxhcgbds.com:8081/channelTv/WXTV_1.m3u8?zshanxd
+#EXTINF:-1 tvg-name="武乡新闻综合" tvg-logo="https://live.fanmingming.cn/tv/武乡新闻综合.png" group-title="山西频道",武乡新闻综合
+http://uzoiczhh.live.sxmty.com/live/hls/0d41f1480c4042d49927858f01fde707/53130407737b417b9a6259b57246bae3.m3u8?zshanxd
 #EXTINF:-1 tvg-name="汾西综合" tvg-logo="https://live.fanmingming.cn/tv/汾西综合.png" group-title="山西频道",汾西综合
 https://qmmqvzoz.live.sxmty.com/live/hls/f24f8a390c084386a564074c9260100c/be3fdf07606145739ab2c4b80fe0136a.m3u8?zshanxd
 #EXTINF:-1 tvg-name="广东新闻" tvg-logo="https://live.fanmingming.cn/tv/广东新闻.png" group-title="广东频道",广东新闻
@@ -313,6 +311,8 @@ http://stream5.jlntv.cn/wq/playlist.m3u8
 http://drive.mxmy.net:8888/udp/239.3.1.164:8001
 #EXTINF:-1 tvg-name=" 支持作者" tvg-logo="https://live.fanmingming.cn/tv/ 支持作者.png" group-title="其他频道", 支持作者
 https://vd2.bdstatic.com/mda-sctj0f6r4u1bpebc/1080p/cae_h264/1774706523506678171/mda-sctj0f6r4u1bpebc.mp4
+#EXTINF:-1 tvg-name=" 海绵宝宝" tvg-logo="https://live.fanmingming.cn/tv/ 海绵宝宝.png" group-title="其他频道", 海绵宝宝
+https://live.metshop.top/douyu/3949681
 #EXTINF:-1 tvg-name=" 熊猫直播" tvg-logo="https://live.fanmingming.cn/tv/ 熊猫直播.png" group-title="其他频道", 熊猫直播
 https://gcwbndali.v.myalicdn.com/gcwbnd/ipanda1000_2/index.m3u8
 #EXTINF:-1 tvg-name=" 猫和老鼠" tvg-logo="https://live.fanmingming.cn/tv/ 猫和老鼠.png" group-title="其他频道", 猫和老鼠
@@ -389,8 +389,6 @@ https://live.metshop.top/huya/11602081
 http://cdn.jdshipin.com:8880/huya.php?id=11602081
 #EXTINF:-1 tvg-name="三国演义" tvg-logo="https://live.fanmingming.cn/tv/三国演义.png" group-title="其他频道",三国演义
 https://live.ottiptv.cc/huya/11602081
-#EXTINF:-1 tvg-name="世界地理" tvg-logo="https://live.fanmingming.cn/tv/世界地理.png" group-title="其他频道",世界地理
-https://shcm-stream-cf1.stream.264788.xyz/cms001/ch00000090990000001620/index.m3u8?streamid=8a034b40397504e25b3775c772237996&streamkey=01vY5fRxC8VyKg4oq30vfikHXTCAKySLP29l6OG91kQlzDttHgzNLkUw5kivm3PfNsVHJv5FgdsPBYFYI2IWpt7tfRCuFHqLT2pvX67ubMds8jl2DHtvOh0&token=1775754349-4f33f4f84a4abeba-0-91687dc8c9325092efa1d00f330d2710
 #EXTINF:-1 tvg-name="中华小当家" tvg-logo="https://live.fanmingming.cn/tv/中华小当家.png" group-title="其他频道",中华小当家
 https://live.metshop.top/huya/11342413
 #EXTINF:-1 tvg-name="中华小当家" tvg-logo="https://live.fanmingming.cn/tv/中华小当家.png" group-title="其他频道",中华小当家
@@ -479,6 +477,8 @@ http://php.jdshipin.com/TVOD/iptv.php?id=mzt2
 http://www.hiliu.myds.me:18088/rtp/239.69.1.147:10518
 #EXTINF:-1 tvg-name="沭阳综合" tvg-logo="https://live.fanmingming.cn/tv/沭阳综合.png" group-title="其他频道",沭阳综合
 http://shuyang-tv-hls.cm.jstv.com/shuyang-tv/shuyangzh.m3u8
+#EXTINF:-1 tvg-name="海绵宝宝" tvg-logo="https://live.fanmingming.cn/tv/海绵宝宝.png" group-title="其他频道",海绵宝宝
+https://live.metshop.top/douyu/3949681
 #EXTINF:-1 tvg-name="涟水电视台综合" tvg-logo="https://live.fanmingming.cn/tv/涟水电视台综合.png" group-title="其他频道",涟水电视台综合
 https://lianshui-tv-hls.cm.jstv.com:443/lianshui-tv/lsxw.m3u8
 #EXTINF:-1 tvg-name="涟水电视台综合" tvg-logo="https://live.fanmingming.cn/tv/涟水电视台综合.png" group-title="其他频道",涟水电视台综合
