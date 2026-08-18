@@ -69,6 +69,8 @@ https://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name=" 都市剧场" tvg-logo="https://live.fanmingming.cn/tv/ 都市剧场.png" group-title="上海频道", 都市剧场
 https://satellitepull.cnr.cn/live/wxcqxwgb/playlist.m3u8
+#EXTINF:-1 tvg-name="上海第一财经" tvg-logo="https://live.fanmingming.cn/tv/上海第一财经.png" group-title="上海频道",上海第一财经
+https://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="第一财经" tvg-logo="https://live.fanmingming.cn/tv/第一财经.png" group-title="上海频道",第一财经
 http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="萧山新闻综合" tvg-logo="https://live.fanmingming.cn/tv/萧山新闻综合.png" group-title="上海频道",萧山新闻综合
@@ -127,8 +129,6 @@ https://qmmqvzoz.live.sxmty.com/live/hls/f24f8a390c084386a564074c9260100c/be3fdf
 https://www.wxhcgbds.com:8081/channelTv/WXTV_1.m3u8?zshanxd
 #EXTINF:-1 tvg-name="武乡新闻综合" tvg-logo="https://live.fanmingming.cn/tv/武乡新闻综合.png" group-title="山西频道",武乡新闻综合
 http://uzoiczhh.live.sxmty.com/live/hls/0d41f1480c4042d49927858f01fde707/53130407737b417b9a6259b57246bae3.m3u8?zshanxd
-#EXTINF:-1 tvg-name="汾西综合" tvg-logo="https://live.fanmingming.cn/tv/汾西综合.png" group-title="山西频道",汾西综合
-https://qmmqvzoz.live.sxmty.com/live/hls/f24f8a390c084386a564074c9260100c/be3fdf07606145739ab2c4b80fe0136a.m3u8?zshanxd
 #EXTINF:-1 tvg-name="广东新闻" tvg-logo="https://live.fanmingming.cn/tv/广东新闻.png" group-title="广东频道",广东新闻
 https://stream1.freetv.fun/yan-dong-xin-wen-2.m3u8
 #EXTINF:-1 tvg-name="广东珠江" tvg-logo="https://live.fanmingming.cn/tv/广东珠江.png" group-title="广东频道",广东珠江
@@ -161,10 +161,6 @@ http://110.153.180.106:55555/out_4/index.m3u8
 http://110.153.180.106:55555/out_2/index.m3u8
 #EXTINF:-1 tvg-name="河南都市" tvg-logo="https://live.fanmingming.cn/tv/河南都市.png" group-title="河南频道",河南都市
 http://1.94.31.214/php/hntv.php?id=hnds
-#EXTINF:-1 tvg-name="上虞新商都" tvg-logo="https://live.fanmingming.cn/tv/上虞新商都.png" group-title="浙江频道",上虞新商都
-https://stream1.freetv.fun/shang-yu-xin-shang-du-2.m3u8
-#EXTINF:-1 tvg-name="上虞新商都" tvg-logo="https://live.fanmingming.cn/tv/上虞新商都.png" group-title="浙江频道",上虞新商都
-https://stream1.freetv.fun/shang-yu-xin-shang-du-1.m3u8
 #EXTINF:-1 tvg-name="浙江民生休闲" tvg-logo="https://live.fanmingming.cn/tv/浙江民生休闲.png" group-title="浙江频道",浙江民生休闲
 https://stream1.freetv.fun/zhe-jiang-min-sheng-2.m3u8
 #EXTINF:-1 tvg-name="绍兴文化影视" tvg-logo="https://live.fanmingming.cn/tv/绍兴文化影视.png" group-title="浙江频道",绍兴文化影视
