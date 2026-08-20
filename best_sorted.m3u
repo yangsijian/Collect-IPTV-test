@@ -65,8 +65,6 @@ https://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name=" 都市剧场" tvg-logo="https://live.fanmingming.cn/tv/ 都市剧场.png" group-title="上海频道", 都市剧场
 https://satellitepull.cnr.cn/live/wxcqxwgb/playlist.m3u8
-#EXTINF:-1 tvg-name="上海第一财经" tvg-logo="https://live.fanmingming.cn/tv/上海第一财经.png" group-title="上海频道",上海第一财经
-https://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="第一财经" tvg-logo="https://live.fanmingming.cn/tv/第一财经.png" group-title="上海频道",第一财经
 http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="萧山新闻综合" tvg-logo="https://live.fanmingming.cn/tv/萧山新闻综合.png" group-title="上海频道",萧山新闻综合
@@ -119,8 +117,6 @@ http://zbbf2.ahbztv.com/live/418.m3u8?zanhd
 http://zbbf2.ahbztv.com/live/416.m3u8?zanhd
 #EXTINF:-1 tvg-name="祁门综合" tvg-logo="https://live.fanmingming.cn/tv/祁门综合.png" group-title="安徽频道",祁门综合
 http://zbbf2.ahbztv.com/live/416.m3u8?zanhd
-#EXTINF:-1 tvg-name=" 古县综合" tvg-logo="https://live.fanmingming.cn/tv/ 古县综合.png" group-title="山西频道", 古县综合
-https://l2fpdktp.live.sxmty.com/live/hls/e4c3b363cc4549788e2d983f403e07db/d99ce1eb686e41b9afc888110bd95aa7.m3u8?zshanxd
 #EXTINF:-1 tvg-name=" 汾西综合" tvg-logo="https://live.fanmingming.cn/tv/ 汾西综合.png" group-title="山西频道", 汾西综合
 https://qmmqvzoz.live.sxmty.com/live/hls/f24f8a390c084386a564074c9260100c/be3fdf07606145739ab2c4b80fe0136a.m3u8?zshanxd
 #EXTINF:-1 tvg-name=" 长子综合" tvg-logo="https://live.fanmingming.cn/tv/ 长子综合.png" group-title="山西频道", 长子综合
@@ -159,14 +155,20 @@ http://110.153.180.106:55555/out_4/index.m3u8
 http://110.153.180.106:55555/out_2/index.m3u8
 #EXTINF:-1 tvg-name="优漫卡通" tvg-logo="https://live.fanmingming.cn/tv/优漫卡通.png" group-title="江苏频道",优漫卡通
 https://stream1.freetv.fun/you-man-qia-tong-11.m3u8
-#EXTINF:-1 tvg-name="滨海新闻综合" tvg-logo="https://live.fanmingming.cn/tv/滨海新闻综合.png" group-title="江苏频道",滨海新闻综合
-http://traffic.jbh.tjbh.com/live/bhtv10/playlist.m3u8
+#EXTINF:-1 tvg-name="优漫卡通" tvg-logo="https://live.fanmingming.cn/tv/优漫卡通.png" group-title="江苏频道",优漫卡通
+https://stream1.freetv.fun/you-man-qia-tong-11.m3u8
 #EXTINF:-1 tvg-name="上虞新商都" tvg-logo="https://live.fanmingming.cn/tv/上虞新商都.png" group-title="浙江频道",上虞新商都
 https://stream1.freetv.fun/shang-yu-xin-shang-du-2.m3u8
 #EXTINF:-1 tvg-name="上虞新商都" tvg-logo="https://live.fanmingming.cn/tv/上虞新商都.png" group-title="浙江频道",上虞新商都
 https://stream1.freetv.fun/shang-yu-xin-shang-du-1.m3u8
+#EXTINF:-1 tvg-name="浙江民生休闲" tvg-logo="https://live.fanmingming.cn/tv/浙江民生休闲.png" group-title="浙江频道",浙江民生休闲
+https://stream1.freetv.fun/zhe-jiang-min-sheng-2.m3u8
+#EXTINF:-1 tvg-name="绍兴文化影视" tvg-logo="https://live.fanmingming.cn/tv/绍兴文化影视.png" group-title="浙江频道",绍兴文化影视
+https://stream1.freetv.fun/shao-xing-wen-hua-ying-shi-1.m3u8
 #EXTINF:-1 tvg-name="绍兴文化影视" tvg-logo="https://live.fanmingming.cn/tv/绍兴文化影视.png" group-title="浙江频道",绍兴文化影视
 https://t.freetv.fun/live/shao-xing-wen-hua-ying-shi-1.m3u8
+#EXTINF:-1 tvg-name="绍兴文化影院" tvg-logo="https://live.fanmingming.cn/tv/绍兴文化影院.png" group-title="浙江频道",绍兴文化影院
+https://stream1.freetv.fun/shao-xing-wen-hua-ying-yuan-2.m3u8
 #EXTINF:-1 tvg-name="绍兴文化影院" tvg-logo="https://live.fanmingming.cn/tv/绍兴文化影院.png" group-title="浙江频道",绍兴文化影院
 https://t.freetv.fun/live/shao-xing-wen-hua-ying-yuan-2.m3u8
 #EXTINF:-1 tvg-name="武汉一台新闻综合" tvg-logo="https://live.fanmingming.cn/tv/武汉一台新闻综合.png" group-title="湖北频道",武汉一台新闻综合
@@ -225,6 +227,8 @@ http://satellitepull.cnr.cn/live/wx32fjxwgb/playlist.m3u8
 http://satellitepull.cnr.cn/live/wx32fjdnjjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="安顺新闻" tvg-logo="https://live.fanmingming.cn/tv/安顺新闻.png" group-title="贵州频道",安顺新闻
 http://hplayer1.juyun.tv/camera/154379194.m3u8
+#EXTINF:-1 tvg-name="哈尔滨新闻综合" tvg-logo="https://live.fanmingming.cn/tv/哈尔滨新闻综合.png" group-title="黑龙江频道",哈尔滨新闻综合
+https://stream1.freetv.fun/ha-er-bin-xin-wen-zong-he-4.m3u8
 #EXTINF:-1 tvg-name=" 1993年春晚" tvg-logo="https://live.fanmingming.cn/tv/ 1993年春晚.png" group-title="其他频道", 1993年春晚
 https://alimov2.a.kwimgs.com/upic/2023/01/13/22/BMjAyMzAxMTMyMjEwMDNfNDAzMDAxOTlfOTM1MTIzMzYwODJfMF8z_b_B647d10e431b4cc5e48e6c77347d69021.mp4
 #EXTINF:-1 tvg-name=" 1994年春晚" tvg-logo="https://live.fanmingming.cn/tv/ 1994年春晚.png" group-title="其他频道", 1994年春晚
@@ -564,9 +568,13 @@ https://epg.pw/stream/8855a9936e37e608a0ec8a014cce1673dee9c5d68d560da376cc92e5ed
 #EXTINF:-1 tvg-name="纬来体育" tvg-logo="https://live.fanmingming.cn/tv/纬来体育.png" group-title="其他频道",纬来体育
 https://epg.pw/stream/ab6df63b64d0cc44a1f4f029ed847a26fa54a7aebd455578fb05a63f02c22f4b.m3u8
 #EXTINF:-1 tvg-name="纬来体育" tvg-logo="https://live.fanmingming.cn/tv/纬来体育.png" group-title="其他频道",纬来体育
+https://epg.pw/stream/4f18dfe0593db5c686eb64ae8edaf2a9202d4d46bdc9bbde2cee27708e12ea01.m3u8
+#EXTINF:-1 tvg-name="纬来体育" tvg-logo="https://live.fanmingming.cn/tv/纬来体育.png" group-title="其他频道",纬来体育
 https://epg.pw/stream/8855a9936e37e608a0ec8a014cce1673dee9c5d68d560da376cc92e5edef2b25.m3u8
 #EXTINF:-1 tvg-name="纬来体育" tvg-logo="https://live.fanmingming.cn/tv/纬来体育.png" group-title="其他频道",纬来体育
 https://epg.pw/stream/ab6df63b64d0cc44a1f4f029ed847a26fa54a7aebd455578fb05a63f02c22f4b.m3u8
+#EXTINF:-1 tvg-name="纬来体育" tvg-logo="https://live.fanmingming.cn/tv/纬来体育.png" group-title="其他频道",纬来体育
+https://epg.pw/stream/4f18dfe0593db5c686eb64ae8edaf2a9202d4d46bdc9bbde2cee27708e12ea01.m3u8
 #EXTINF:-1 tvg-name="翡翠台" tvg-logo="https://live.fanmingming.cn/tv/翡翠台.png" group-title="其他频道",翡翠台
 http://r.jdshipin.com/qClQf
 #EXTINF:-1 tvg-name="翡翠台" tvg-logo="https://live.fanmingming.cn/tv/翡翠台.png" group-title="其他频道",翡翠台
@@ -595,5 +603,7 @@ https://epg.pw/stream/6d7bf281e3d739806a73f5373acaa6e01988ec9739f5ac1355ce54b47a
 https://live.264788.xyz/channel/fengyunyinyue?streamid=1b41fb9153cba3ee19bd5d1b323da27e&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
 #EXTINF:-1 tvg-name="风云音乐" tvg-logo="https://live.fanmingming.cn/tv/风云音乐.png" group-title="其他频道",风云音乐
 https://live.264788.xyz/channel/fengyunyinyue?streamid=be37d16b874e7ba11dd383d7ecd75752&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
+#EXTINF:-1 tvg-name="魅力足球" tvg-logo="https://live.fanmingming.cn/tv/魅力足球.png" group-title="其他频道",魅力足球
+https://stream1.freetv.fun/mei-li-zu-qiu-1.m3u8
 #EXTINF:-1 tvg-name="黑莓电影" tvg-logo="https://live.fanmingming.cn/tv/黑莓电影.png" group-title="其他频道",黑莓电影
 https://epg.pw/stream/ffcb6572863f0745a7369fbd9d901f1dfd0ab8fab8bad8bebb4e01c90b303c47.m3u8
