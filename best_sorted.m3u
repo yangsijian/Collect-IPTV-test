@@ -321,8 +321,6 @@ https://lianshui-tv-hls.cm.jstv.com:443/lianshui-tv/lsxw.m3u8
 http://lianshui-tv-hls.cm.jstv.com/lianshui-tv/lsxw.m3u8?zjiangsd
 #EXTINF:-1 tvg-name="涟水综合" tvg-logo="https://live.fanmingming.cn/tv/涟水综合.png" group-title="其他频道",涟水综合
 http://lianshui-tv-hls.cm.jstv.com/lianshui-tv/lsxw.m3u8
-#EXTINF:-1 tvg-name="漫画解说" tvg-logo="https://live.fanmingming.cn/tv/漫画解说.png" group-title="其他频道",漫画解说
-https://www.goodiptv.club/douyu/5907076
 #EXTINF:-1 tvg-name="猫和老鼠" tvg-logo="https://live.fanmingming.cn/tv/猫和老鼠.png" group-title="其他频道",猫和老鼠
 https://live.ottiptv.cc/huya/11352879
 #EXTINF:-1 tvg-name="福建公共" tvg-logo="https://live.fanmingming.cn/tv/福建公共.png" group-title="其他频道",福建公共
@@ -363,6 +361,10 @@ https://goodiptv.club/douyu/6091425
 http://r.jdshipin.com/qClQf
 #EXTINF:-1 tvg-name="翡翠台" tvg-logo="https://live.fanmingming.cn/tv/翡翠台.png" group-title="其他频道",翡翠台
 http://r.jdshipin.com/qrfbg
+#EXTINF:-1 tvg-name="翡翠台" tvg-logo="https://live.fanmingming.cn/tv/翡翠台.png" group-title="其他频道",翡翠台
+http://r.jdshipin.com/62WM7
+#EXTINF:-1 tvg-name="翡翠台" tvg-logo="https://live.fanmingming.cn/tv/翡翠台.png" group-title="其他频道",翡翠台
+http://r.jdshipin.com/n90gt
 #EXTINF:-1 tvg-name="翡翠台" tvg-logo="https://live.fanmingming.cn/tv/翡翠台.png" group-title="其他频道",翡翠台
 http://r.jdshipin.com/GeWKr
 #EXTINF:-1 tvg-name="西游记" tvg-logo="https://live.fanmingming.cn/tv/西游记.png" group-title="其他频道",西游记
